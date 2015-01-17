@@ -41,7 +41,7 @@ Ignoring the missing values in dat$steps for now.
 
 ```r
 dat2 <- aggregate(steps ~ date, data=dat, FUN=sum)
-barplot(dat2$steps, main="Total number of steps per day",xlab="date", ylab="nr steps", names.arg=dat2$date, col="2")
+hist(dat2$steps, breaks=20, col="2",main="Total number of steps per day", xlab="steps per day")
 ```
 
 ![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2-1.png) 
@@ -75,7 +75,8 @@ median(dat2$steps)
 
 ```r
 dat3 <- aggregate(steps ~ interval, dat, mean, na.rm = TRUE)
-plot(dat3, type = "l" , xlab = "Interval", ylab = "Number of steps", main ="Average number of steps")
+plot(dat3, type = "l" , xlab = "Interval", ylab = "Number of steps", 
+     main ="Average number of steps")
 ```
 
 ![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4-1.png) 
@@ -134,7 +135,7 @@ sum(is.na(filled_dat))
 
 ```r
 filled2 <- aggregate(steps ~ date, data=filled_dat, FUN=sum)
-barplot(filled2$steps, main="Total number of steps per day after filling NAs", xlab="date", ylab="nr steps", names.arg=filled2$date, col ="2")
+hist(filled2$steps, breaks=20, col="2",main="Total number of steps per day after filling NAs", xlab="steps per day")
 ```
 
 ![plot of chunk unnamed-chunk-8](figure/unnamed-chunk-8-1.png) 

@@ -22,7 +22,7 @@ Ignoring the missing values in dat$steps for now.
 
 ```{r, echo=T}
 dat2 <- aggregate(steps ~ date, data=dat, FUN=sum)
-barplot(dat2$steps, main="Total number of steps per day",xlab="date", ylab="nr steps", names.arg=dat2$date, col="2")
+hist(dat2$steps, breaks=20, col="2",main="Total number of steps per day", xlab="steps per day")
 ```
 
 2. Calculate and report the *mean* and *median* total number of
@@ -41,7 +41,8 @@ median(dat2$steps)
 
 ```{r}
 dat3 <- aggregate(steps ~ interval, dat, mean, na.rm = TRUE)
-plot(dat3, type = "l" , xlab = "Interval", ylab = "Number of steps", main ="Average number of steps")
+plot(dat3, type = "l" , xlab = "Interval", ylab = "Number of steps", 
+     main ="Average number of steps")
 ```
 
 2.Which 5-minute interval, on average across all the days in the
@@ -82,7 +83,7 @@ sum(is.na(filled_dat))
 
 ```{r}
 filled2 <- aggregate(steps ~ date, data=filled_dat, FUN=sum)
-barplot(filled2$steps, main="Total number of steps per day after filling NAs", xlab="date", ylab="nr steps", names.arg=filled2$date, col ="2")
+hist(filled2$steps, breaks=20, col="2",main="Total number of steps per day after filling NAs", xlab="steps per day")
 mean(filled2$steps)
 median(filled2$steps)
 ```
